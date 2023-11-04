@@ -8,11 +8,6 @@ import { CANDIDATE_DASH, CANDIDATE_APPLIED_JOBS, INTERVIEW_PREP } from "../route
 import { jwtUserPayloadType } from "../utils/SetAuthTokenAsCookie";
 
 
-
-
-
-
-
 const UserIcon = ({ active }: { active?: boolean }) => {
     const color = active ? '#2563eb' : 'black'
 

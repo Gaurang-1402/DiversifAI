@@ -38,5 +38,5 @@ export const INTERVIEW_PREP='/c/interview-prep'
 export const CANDIDATE_JOB_DETAILS=(id: string) => `/c/jobs/${id}`
 export const CANDIDATE_APPLY_JOB=(id: string) => `/c/jobs/${id}/apply`
 
-export const CANDIDATE_RESUME_UPLOAD=(id: string) => `/c/${id}/upload-resume`
+export const CANDIDATE_RESUME_UPLOAD=`/c/upload-resume`
 

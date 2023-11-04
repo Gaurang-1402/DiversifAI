@@ -31,9 +31,6 @@ export default function AuthStart() {
                 </Link>
 
 
-
-
-
                 <Link href={REGISTER_AS_STUDENT_SCREEN}>
                     <ButtonPrimarySmall>
                         Register as Student
