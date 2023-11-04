@@ -25,6 +25,8 @@ export const RECUITER_CANDIDATE_DETAILS=(candidateId: string, jobsId: string) =>
 
 
 
+export const CANDIDATE_ALL_JOBS=`/c/jobs/all`
+
 export const CANDIDATE_JOB_DETAILS=(id: string) => `/c/jobs/${id}`
 
 export const CANDIDATE_APPLY_JOB=(id: string) => `/c/jobs/${id}/apply`

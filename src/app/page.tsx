@@ -4,16 +4,24 @@ import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { ButtonPrimarySmall } from './components/Buttons'
 import { AUTH_SCREEN } from './routes-config'
+import { Navbar } from './components/Navbar'
+import { getUser } from './utils/GetUser'
 
 export default function Home() {
-  return (
-  <div>
-          <Link href={AUTH_SCREEN}>
-                <ButtonPrimarySmall>
-                    Auth Screen
-                </ButtonPrimarySmall>
-            </Link>
+  const user = getUser()
 
-  </div>
+  return (
+    <div>
+
+      <Navbar user={user} />
+
+
+      <Link href={AUTH_SCREEN}>
+        <ButtonPrimarySmall>
+          Auth Screen
+        </ButtonPrimarySmall>
+      </Link>
+
+    </div>
   )
 }

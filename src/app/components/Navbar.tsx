@@ -6,6 +6,7 @@ import { logOutUserHandler } from "@/app/logoutbtn";
 import { usePathname, useRouter } from "next/navigation";
 import { User } from "@prisma/client";
 import { AUTH_SCREEN, PROFILE_SCREEN } from "../routes-config";
+import { jwtUserPayloadType } from "../utils/SetAuthTokenAsCookie";
 
 
 
@@ -29,7 +30,7 @@ function NavItemsWrapper({ isAuthenticated }: { isAuthenticated: boolean }) {
 }
 
 
-export const Navbar = ({ user }: { user: User | null }) => {
+export const Navbar = ({ user }: { user: jwtUserPayloadType | null }) => {
     return (
         <header className="bg-transparent mb-8 backdrop-blur-sm border-b h-16 top-0 right-0 z-40 w-screen flex items-center transition-all sticky">
             <div className="px-4 sm:px-12 w-full">
