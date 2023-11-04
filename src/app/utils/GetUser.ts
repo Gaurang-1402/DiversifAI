@@ -6,3 +6,5 @@ export const getUser = (): jwtUserPayloadType | null => {
     const myCookie = cookies().get("cocoAPI")?.value;
     return getJwtPayloadFromCookie(myCookie)
 }
+
+

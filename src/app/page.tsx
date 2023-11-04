@@ -3,25 +3,18 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { ButtonPrimarySmall } from './components/Buttons'
-import { AUTH_SCREEN } from './routes-config'
-import { Navbar } from './components/Navbar'
+import { AUTH_SCREEN, DASH } from './routes-config'
+import { BottomNavbar } from './components/BottomNavbar'
 import { getUser } from './utils/GetUser'
+import { redirect } from 'next/navigation'
 
 export default function Home() {
   const user = getUser()
 
-  return (
-    <div>
-
-      <Navbar user={user} />
-
-
-      <Link href={AUTH_SCREEN}>
-        <ButtonPrimarySmall>
-          Auth Screen
-        </ButtonPrimarySmall>
-      </Link>
-
-    </div>
-  )
+  if(user){
+    redirect(DASH)
+  }else{
+    redirect(AUTH_SCREEN)
+  }
+  return null
 }
