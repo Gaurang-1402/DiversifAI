@@ -26,7 +26,7 @@ export default function AuthStart() {
 
                 <Link href={REGISTER_AS_RECRUITER_SCREEN}>
                     <ButtonPrimarySmall>
-                        Login as Recuiter
+                        Register as Recuiter
                     </ButtonPrimarySmall>
                 </Link>
 
@@ -35,7 +35,7 @@ export default function AuthStart() {
 
                 <Link href={REGISTER_AS_STUDENT_SCREEN}>
                     <ButtonPrimarySmall>
-                        Login as Student
+                    Register as Student
                     </ButtonPrimarySmall>
                 </Link>
             </div>
