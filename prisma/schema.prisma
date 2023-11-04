@@ -11,11 +11,36 @@ datasource db {
 }
 
 model User {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  email String  @unique
-  firstName String
-  lastName String
-  isRecruiter Boolean
-  registeredAt DateTime @default(now())
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  email         String        @unique
+  firstName     String
+  lastName      String
+  isRecruiter   Boolean
+  registeredAt  DateTime      @default(now())
   profilePicUrl String
+  Job           Job[]
+  JobsApplied   JobsApplied[]
+}
+
+model Job {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  location    String
+  salary      String
+  postedAt    DateTime      @default(now())
+  postedBy    User          @relation(fields: [postedById], references: [id])
+  postedById  String        @db.ObjectId
+  JobsApplied JobsApplied[]
+}
+
+model JobsApplied {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  jobId     String   @db.ObjectId
+  userId    String   @db.ObjectId
+  appliedAt DateTime @default(now())
+  job       Job      @relation(fields: [jobId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([jobId, userId])
 }
