@@ -17,8 +17,8 @@ export default async function CandidateJobsAll() {
 
     const jobs = await prisma.job.findMany();
 
-    return <div className="flex flex-col">
-        <div className="mx-4 mt-4">
+    return <div className="flex flex-col" >
+        <div className="mx-4 mt-4" >
 
             <div className="flex flex-row justify-between items-center   ">
                 <div className="flex flex-col">
