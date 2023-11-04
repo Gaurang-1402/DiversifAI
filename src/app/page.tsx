@@ -7,13 +7,12 @@ import { AUTH_SCREEN } from './routes-config'
 
 export default function Home() {
   return (
-  <div>
-          <Link href={AUTH_SCREEN}>
-                <ButtonPrimarySmall>
-                    Auth Screen
-                </ButtonPrimarySmall>
-            </Link>
-
-  </div>
+    <div>
+      <Link href={AUTH_SCREEN}>
+        <ButtonPrimarySmall>
+          Auth Screen
+        </ButtonPrimarySmall>
+      </Link>
+    </div>
   )
 }

@@ -13,6 +13,7 @@ export enum AuthType {
 }
 
 
+
 export async function GET(request: NextRequest) {
     try {
         const state = request.nextUrl.searchParams.get('state')
@@ -20,7 +21,7 @@ export async function GET(request: NextRequest) {
             throw new Error("No state provided")
         }
 
-        const authType= JSON.parse(state)?.authType as any as AuthType
+        const authType = JSON.parse(state)?.authType as any as AuthType
 
         console.log(authType)
         if (authType !== AuthType.LOGIN && authType !== AuthType.REGISTER_AS_STUDENT && authType !== AuthType.REGISTER_AS_RECRUITER) {
@@ -78,7 +79,9 @@ export async function GET(request: NextRequest) {
                 })
             }
 
-            const response = NextResponse.redirect(new URL("/dash", request.url));
+            console.log(userInstance)
+
+            const response = NextResponse.redirect(new URL(`/c/${userInstance.id}/upload-resume`, request.url));
             setAuthTokenAsCookie(response, userInstance)
 
             return response;
@@ -87,7 +90,7 @@ export async function GET(request: NextRequest) {
         }
     } catch (err: any) {
         console.error(err);
-        return NextResponse.json({err: err.message});
+        return NextResponse.json({ err: err.message });
     }
 
 }

@@ -23,9 +23,9 @@ export const RECRUITER_JOB_DETAILS=(id: string) => `/r/jobs/${id}`
 
 export const RECUITER_CANDIDATE_DETAILS=(candidateId: string, jobsId: string) => `/r/jobs/${jobsId}/${candidateId}`
 
-
-
 export const CANDIDATE_JOB_DETAILS=(id: string) => `/c/jobs/${id}`
 
 export const CANDIDATE_APPLY_JOB=(id: string) => `/c/jobs/${id}/apply`
+
+export const CANDIDATE_RESUME_UPLOAD=(id: string) => `/c/${id}/upload-resume`
 
