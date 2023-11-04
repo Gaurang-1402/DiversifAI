@@ -16,7 +16,6 @@ export default async function CandidateJobsAll() {
     // console.log(prisma)
 
     const jobs = await prisma.job.findMany();
-    console.log(jobs)
 
     return <div className="flex flex-col">
         <div className="mx-4 mt-4">
@@ -60,58 +59,58 @@ export default async function CandidateJobsAll() {
                 </button>
             </div>
 
-            <div className="h-42 flex flex-col bg-[#8000FF] gap-6  px-6 rounded-3xl mt-10 py-4 my-4">
-                <div className="flex flex-row justify-between">
-                    <div className="flex flex-row items-center gap-4">
-                        <div>
-                            Avatar
+            {
+                jobs.map((job) => (
+                    <div className="h-42 flex flex-col bg-[#8000FF] gap-6  px-6 rounded-3xl mt-10 py-4 my-4" key={job.id}>
+                        <div className="flex flex-row justify-between">
+                            <div className="flex flex-row items-center gap-4">
+                                <div>
+                                    Avatar
+                                </div>
+                                <div className="flex flex-col">
+                                    <p style={{
+                                        color: "var(--Pure-White, #FFF)",
+                                        fontFamily: "Poppins",
+                                        fontSize: "20px",
+                                        fontStyle: "normal",
+                                        fontWeight: 600,
+                                        lineHeight: "130%", /* 20.8px */
+                                        letterSpacing: "-0.16px"
+                                    }}>
+                                        {job.title}
+                                    </p>
+                                    <p className="text-white">
+                                        {job.company} {/* Assuming there is a company field in job */}
+                                    </p>
+                                </div>
+                            </div>
+                            <button className="">
+                                <img src="/apply-icon.svg" alt="apply" />
+                            </button>
                         </div>
-                        <div className="flex flex-col">
-                            <p style={{
-                                color: "var(--Pure-White, #FFF)",
-                                fontFamily: "Poppins",
-                                fontSize: "20px",
-                                fontStyle: "normal",
-                                fontWeight: 600,
-                                lineHeight: "130%", /* 20.8px */
-                                letterSpacing: "-0.16px"
-                            }}>
-                                Analyst
-                            </p>
-                            <p className="text-white">
-                                Elevance
-                            </p>
-                        </div>
-                    </div>
-                    <button className="">
-                        <img src="/apply-icon.svg" alt="filter" />
-                    </button>
-                </div>
-                <div className="flex flex-row justify-between">
-                    <div className="inline-flex p-1 px-4 items-start rounded-full bg-[#37007F]">
+                        <div className="flex flex-row justify-between">
+                            {/* Assuming categories like 'Administration', 'Full-Time', 'Junior' are dynamic, replace them accordingly */}
+                            {/* Example: */}
+                            {/* job.categories.map(category => (
+                    <div className="inline-flex p-1 px-4 items-start rounded-full bg-[#37007F]" key={category}>
                         <p className="text-white">
-                            Administration
+                            {category}
                         </p>
                     </div>
-                    <div className="inline-flex p-1 px-4 items-start rounded-full bg-[#37007F]">
-                        <p className="text-white">
-                            Full-Time
-                        </p>                </div>
-                    <div className="inline-flex p-1 px-4 items-start rounded-full bg-[#37007F]">
-                        <p className="text-white">
-                            Junior
-                        </p>                  </div>
-                </div>
-                <div className="flex flex-row justify-between">
-                    <p className="text-white">
-                        $98,000/yr
-                    </p>
-                    <p className="text-white">
-                        Texas, USA
-                    </p>
-                </div>
+                )) */}
+                        </div>
+                        <div className="flex flex-row justify-between">
+                            <p className="text-white">
+                                {job.salary}
+                            </p>
+                            <p className="text-white">
+                                {job.location}
+                            </p>
+                        </div>
+                    </div>
+                ))
+            }
 
-            </div>
         </div>
         <BottomNavbar user={user} />
     </div>
