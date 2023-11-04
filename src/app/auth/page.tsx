@@ -8,35 +8,24 @@ import { BottomNavbar } from '../components/BottomNavbar'
 import { getUser } from '../utils/GetUser'
 
 export default function AuthStart() {
-    const user=getUser()
+    const user = getUser()
     return (
-
         <div>
-
             <BottomNavbar user={user} />
             <div className='px-20 my-20 flex flex-col gap-10 max-w-xs'>
-
-
                 <Link href={LOGIN}>
                     <ButtonPrimarySmall>
                         Login
                     </ButtonPrimarySmall>
                 </Link>
-
-
                 <Link href={REGISTER_AS_RECRUITER_SCREEN}>
                     <ButtonPrimarySmall>
                         Register as Recuiter
                     </ButtonPrimarySmall>
                 </Link>
-
-
-
-
-
                 <Link href={REGISTER_AS_STUDENT_SCREEN}>
                     <ButtonPrimarySmall>
-                    Register as Student
+                        Register as Student
                     </ButtonPrimarySmall>
                 </Link>
             </div>

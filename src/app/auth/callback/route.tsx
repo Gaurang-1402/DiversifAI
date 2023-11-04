@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
             throw new Error("No state provided")
         }
 
-        const authType= JSON.parse(state)?.authType as any as AuthType
+        const authType = JSON.parse(state)?.authType as any as AuthType
 
         console.log(authType)
         if (authType !== AuthType.LOGIN && authType !== AuthType.REGISTER_AS_STUDENT && authType !== AuthType.REGISTER_AS_RECRUITER) {
@@ -32,8 +32,6 @@ export async function GET(request: NextRequest) {
             if (!code) {
                 throw new Error("No code provided");
             }
-
-
 
             let { tokens } = await googleOAuth2ClientInstance.getToken(code);
             googleOAuth2ClientInstance.setCredentials(tokens);
@@ -87,7 +85,7 @@ export async function GET(request: NextRequest) {
         }
     } catch (err: any) {
         console.error(err);
-        return NextResponse.json({err: err.message});
+        return NextResponse.json({ err: err.message });
     }
 
 }
