@@ -28,7 +28,7 @@ export const Interceptor = () => {
             diversify-ai
             <div className="mt-10"></div>
             <div className='max-w-xl mx-auto font-medium text-transparent text-xl bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600'>
-                Thanks for visiting our web app! For the best viewing experience, please access it on a <span className='font-extrabold'>mobile</span> or <span className='font-extrabold'> smaller device</span>.
+                Thanks for visiting our web app! For best viewing experience, please access it on a <span className='font-extrabold'>mobile</span> or <span className='font-extrabold'> smaller device</span>.
             </div>
             {/* <img src='/sorry.png' className='max-w-xs mt-6 mx-auto' /> */}
         </div>
