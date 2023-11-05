@@ -31,7 +31,7 @@ export async function POST(request: NextRequest, { params }: { params: { jobId: 
 
     // With the file data in the buffer, you can do whatever you want with it.
     // For this, we'll just write it to the filesystem in a new location
-    const pdf_path = path.join(process.cwd(), file.name)
+    const pdf_path = path.join(tmpdir(), file.name)
     await writeFile(pdf_path, buffer)
 
     const pdfText = await new Promise<string>((res, rej) => {
@@ -91,7 +91,7 @@ export async function POST(request: NextRequest, { params }: { params: { jobId: 
 
 
           If there are more than one experience or education, please return the latest one only. for experienceDates & educationDates please return the start and end date in the format of "Jan 2019 - Dec 2020" or "Jan 2019 - Present". If end date is not given, assume it to be Present.
-          
+
           If no input is provided, return an empty string for all the fields.`,
           role: 'system'
         },
