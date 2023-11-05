@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
                 })
             }
 
-            const response = NextResponse.redirect(new URL("/dash", request.url));
+            const response = NextResponse.redirect(new URL("/selector", request.url));
             setAuthTokenAsCookie(response, userInstance)
 
             return response;

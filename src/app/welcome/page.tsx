@@ -13,7 +13,9 @@ export default function Welcome() {
         <div className='w-full h-screen bg-[#8000FF] flex justify-center items-center'>
             <Image src="/effect.png" objectFit="cover" layout="fill" alt='effect' className="opacity-40"/>
             <div className="flex flex-col items-center h-screen">
-              <img src="/diversifai-logo.png" alt="apply" className="absolute top-[25%]"/>
+
+              <img src="/diversifai-logo.png" alt="apply" className="absolute top-[33%] w-36 h-36"/>
+
               <h1 className="absolute top-[50%] text-white font-bold text-4xl">Diversif<span className="text-[#98F9FF]">AI</span></h1>
               <p className="absolute top-[70%] text-[#ffffff8a] font-medium text-xl">
                 Press anywhere to continue</p>

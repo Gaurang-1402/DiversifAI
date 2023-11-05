@@ -4,6 +4,8 @@ export const LOGOUT_API= "/auth/logout"
 
 export const WELCOME_SCREEN='/welcome/'
 export const AUTH_SCREEN='/auth/'
+export const SELECTOR='/selector/'
+export const RESUME_UPLOAD='/pdfupload/'
 
 export const LOGIN='/auth/proxy?authType=LOGIN'
 export const REGISTER_AS_STUDENT_SCREEN='/auth/proxy?authType=REGISTER_AS_STUDENT'
