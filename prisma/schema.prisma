@@ -11,29 +11,32 @@ datasource db {
 }
 
 model User {
-  id            String        @id @default(auto()) @map("_id") @db.ObjectId
-  email         String        @unique
-  firstName     String
-  lastName      String
-  isRecruiter   Boolean
-  registeredAt  DateTime      @default(now())
-  profilePicUrl String
-  Job           Job[]
-  JobsApplied   JobsApplied[]
-  interviewBotMessages InterviewBotMessage[] 
+  id                  String                @id @default(auto()) @map("_id") @db.ObjectId
+  email               String                @unique
+  firstName           String
+  lastName            String
+  isRecruiter         Boolean
+  registeredAt        DateTime              @default(now())
+  profilePicUrl       String
+  Job                 Job[]
+  JobsApplied         JobsApplied[]
+  InterviewBotMessage InterviewBotMessage[]
 }
 
 model Job {
-  id          String        @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  description String
-  location    String
-  salary      String
-  postedAt    DateTime      @default(now())
-  postedBy    User          @relation(fields: [postedById], references: [id])
-  postedById  String        @db.ObjectId
-  JobsApplied JobsApplied[]
-  interviewBotMessages InterviewBotMessage[]
+  id                  String                @id @default(auto()) @map("_id") @db.ObjectId
+  title               String
+  description         String
+  location            String
+  company             String
+  companyLogo         String
+  salary              String
+  postedAt            DateTime              @default(now())
+  postedBy            User                  @relation(fields: [postedById], references: [id])
+  postedById          String                @db.ObjectId
+  JobsApplied         JobsApplied[]
+  categories          String[]
+  InterviewBotMessage InterviewBotMessage[]
 }
 
 model JobsApplied {
@@ -48,15 +51,19 @@ model JobsApplied {
 }
 
 
+enum Role {
+  user
+  assistant
+  system
+}
+
 model InterviewBotMessage {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   content   String
-  role      String   // "AI" or "user"
-  createdAt DateTime @default(now())
-  jobId     String?  @db.ObjectId
-  userId    String?  @db.ObjectId
-  job       Job?     @relation(fields: [jobId], references: [id], name: "JobInterviewBotMessages")
-  user      User?    @relation(fields: [userId], references: [id], name: "UserInterviewBotMessages")
-  @@index([jobId], name: "indexInterviewBotMessageOnJobId")
-  @@index([userId], name: "indexInterviewBotMessageOnUserId")
+  role      Role
+  createdAt DateTime
+  jobId     String   @db.ObjectId
+  userId    String   @db.ObjectId
+  job       Job      @relation(fields: [jobId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }

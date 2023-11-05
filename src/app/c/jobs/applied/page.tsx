@@ -45,7 +45,7 @@ export default async function CandidateJobsAll() {
                     <div key={jobApplied.jobId} className="flex flex-row justify-between shadow-lg mt-7 px-6 py-6 rounded-lg">
                         <div className="flex flex-row items-center gap-4">
                             {/* Replace with actual logo if available */}
-                            <p>logo</p>
+                            <img className='rounded-full w-10' src={jobApplied.job.companyLogo} alt="avatar" />
                             <div className="flex flex-col gap-2">
                                 {/* Use job title from the job data */}
                                 <p className="font-bold">
@@ -53,7 +53,7 @@ export default async function CandidateJobsAll() {
                                 </p>
                                 {/* Use company name from the job data */}
                                 <p className="text-black opacity-50">
-                                    {jobApplied.job.companyName}
+                                    {jobApplied.job.company}
                                 </p>
                             </div>
                         </div>

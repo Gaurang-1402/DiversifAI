@@ -17,6 +17,7 @@ export type jwtUserPayloadType = {
   email: string;
   fName: string;
   lName: string;
+  profilePicUrl: string
 };
 
 
@@ -31,6 +32,7 @@ export const setAuthTokenAsCookie = (
     isRecruiter: user.isRecruiter,
     fName: user.firstName,
     lName: user.lastName,
+    profilePicUrl: user.profilePicUrl
 
   };
   const token = jwt.sign(jwtPayload, jwtToken);
