@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Selector() {
   return (
       <div>
-          <div className='px-8 mt-14 flex flex-col max-w-xs'>
+          <div className='px-8 mt-10 flex flex-col max-w-xs'>
           <h1 className="text-[#8000FF] font-bold text-4xl">Diversif<span className="text-[#18C7D2]">AI</span></h1>
           <h2 className="text-gray-500 font-medium text-2xl mt-2">What describes you?</h2>
           </div>
