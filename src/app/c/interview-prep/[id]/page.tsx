@@ -5,6 +5,9 @@ import { BottomNavbar } from '@/app/components/BottomNavbar';
 import { getUser } from '@/app/utils/GetUser';
 import { NextRequest, NextResponse } from 'next/server';
 import { RedirectToAPageWithToast } from '../../../components/RedirectToAPageWithToast';
+import { prisma } from "@/db"; // Adjust the path to where your Prisma instance is exported
+import OpenAI from 'openai';
+import { m } from 'framer-motion';
 
 function AIChatBubble({ text }) {
     return (
@@ -24,13 +27,103 @@ function UserChatBubble({ text }) {
     );
 }
 
+// export async function loader({ params }) {
+
+//     // ... existing code to get user and job
+//     const { id } = params;
+
+//     const openai = new OpenAI({
+//         apiKey: process.env.OPENAI_API_KEY // This is also the default, can be omitted
+//     });
+//     const job = await prisma.job.findUnique({
+//         where: {
+//             id: params.id,
+//         },
+//     });
+
+//     if (!job) {
+//         throw new Response('Not Found', { status: 404 });
+//     }
+
+//     let interviewPrepContent = '';
+
+//     try {
+//         // Make the call to the OpenAI API
+
+//         const chatCompletion = await openai.chat.completions.create({
+//             model: "gpt-3.5-turbo",
+//             messages: [{ "role": "system", "content": `Based on the following job description, help the candidate prepare for an interview: "${job.description}"` }],
+//         });
+
+//         interviewPrepContent = chatCompletion.choices[0].message;
+//         console.log(interviewPrepContent);
+//     } catch (error) {
+//         console.error('Error calling the OpenAI API:', error);
+//         // Handle the error appropriately. Perhaps return a default message or rethrow the error.
+//     }
+
+//     // Add the interview preparation content to the props returned for the page
+//     return {
+//         props: {
+//             nothing: {}
+//             // job,
+//             // user,
+//             // interviewPrepContent, // This will be passed to your page component
+//         },
+//     };
+// }
+
 
 const AIchatText = "Hello! How can I assist you with your interview preparation?";
 
 const userChatText = "You are very nice.";
 
-export default function InterviewPrep() {
+export default async function InterviewPrep({ params }) {
     const user = getUser()
+    let messageId = 0
+
+    let messages = [];
+
+    const { id } = params;
+
+    const openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY // This is also the default, can be omitted
+    });
+    const job = await prisma.job.findUnique({
+        where: {
+            id: params.id,
+        },
+    });
+
+    if (!job) {
+        throw new Response('Not Found', { status: 404 });
+    }
+
+    let interviewPrepContent = '';
+
+    try {
+        // Make the call to the OpenAI API
+
+        const chatCompletion = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo",
+            messages: [{
+                "role": "system",
+                "content": `Keep the response short about 30 words Based on the following job description, help the candidate prepare for an interview: "${job.description}"`
+            }],
+        });
+
+        interviewPrepContent = chatCompletion.choices[0].message.content;
+        messages.push({ messageId: 1, role: "AI", content: interviewPrepContent });
+        messageId += 1;
+        console.log(interviewPrepContent);
+    } catch (error) {
+        console.error('Error calling the OpenAI API:', error);
+        // Handle the error appropriately. Perhaps return a default message or rethrow the error.
+    }
+
+    // TODO remove this
+    messages.push({ messageId: messageId, role: "user", content: userChatText });
+    messageId += 1;
 
     if (!user) {
         return <AuthRedirectToLandingPageWithToast />
@@ -74,10 +167,13 @@ export default function InterviewPrep() {
             </div>
 
             <div className="mt-5 flex-grow">
-                {/* Content here */}
-                <AIChatBubble text={AIchatText} />
-                <UserChatBubble text={userChatText} />
-                {/* Other content */}
+                {messages.map((message) => (
+                    message.role === "AI" ? (
+                        <AIChatBubble key={message.messageId} text={message.content.trim()} />
+                    ) : (
+                        <UserChatBubble key={message.messageId} text={message.content.trim()} />
+                    )
+                ))}
             </div>
             <div className="fixed inset-x-0 bottom-0 p-4 bg-white">
                 {/* This is the input box container */}
@@ -94,6 +190,7 @@ export default function InterviewPrep() {
                     </button>
                 </div>
             </div>
+
             <div className="fixed inset-x-0 bottom-0">
                 {/* This is your BottomNavbar */}
                 <BottomNavbar user={user} />
