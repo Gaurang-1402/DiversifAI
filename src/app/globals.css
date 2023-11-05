@@ -32,3 +32,32 @@ body::-webkit-scrollbar {
 .form-label textarea{
   @apply block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
 }
+
+
+.form-container {
+  width: 94%;
+  @apply relative border-4 border-purple-900 p-4 mx-auto max-w-lg text-left;
+}
+
+.form-container:before {
+  content: "";
+  display: block;
+  position: absolute;
+  margin-left: -15px;
+  bottom: -15px;
+  left: -4px;
+  top: 15px;
+  width: 15px;
+  @apply bg-purple-900;
+}
+.form-container:after {
+  @apply bg-purple-900;
+  content: "";
+  display: block;
+  position: absolute;
+  margin-left: -15px;
+  bottom: -19px;
+  left: -4px;
+  right: 15px;
+  height: 15px;
+}

@@ -38,9 +38,15 @@ export default async function CandidateJobsAll() {
                 </div>
 
             </div>
+
+            {jobsApplied.length === 0 && <div className="flex flex-col items-center justify-center mt-10">
+                <p className="text-black opacity-50">
+                    You haven't applied to any jobs yet.
+                </p>
+            </div>}
             {
                 jobsApplied.map((jobApplied) => (
-                    <div key={jobApplied.jobId} className="flex flex-row justify-between shadow-lg mt-7 px-6 py-6 rounded-lg">
+                    <div key={jobApplied.jobId} className="border flex flex-row justify-between shadow-lg mt-7 px-6 py-6 rounded-lg">
                         <div className="flex flex-row items-center gap-4">
                             {/* Replace with actual logo if available */}
                             <img className='rounded-full w-10' src={jobApplied.job.companyLogo} alt="avatar" />

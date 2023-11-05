@@ -66,13 +66,18 @@ export default async function CandidateJobsAll() {
                 </button>
             </div>
 
+            {jobs.length === 0 && <div className="flex flex-col items-center justify-center mt-10">
+                <p className="text-black opacity-50">
+                    There are no jobs posted yet 😢.
+                </p>
+            </div>}
+
             {
                 jobs.map((job) => {
                     const isApplied = job.JobsApplied.length > 0
                     return (
                         (
-
-                            <Link href={CANDIDATE_JOB_DETAILS(job.id)} className="h-42 flex flex-col bg-[#8000FF] gap-6  px-6 rounded-3xl mt-10 py-4 my-4" key={job.id}>
+                            <Link href={CANDIDATE_JOB_DETAILS(job.id)} className="border-purple-900 border h-42 flex flex-col bg-[#8000FF] gap-6  px-6 rounded-3xl mt-10 py-4 my-4" key={job.id}>
                                 <div className="flex flex-row justify-between">
                                     <div className="flex flex-row items-center gap-4">
                                         <div>
@@ -96,8 +101,8 @@ export default async function CandidateJobsAll() {
                                     </div>
                                     <button className="">
 
-                                        {isApplied ?<img className='w-10' src="https://img.icons8.com/ios/100/ffffff/instagram-check-mark.png" alt="instagram-check-mark"/>
-                                        :<img className='w-10'  src="https://img.icons8.com/ios/100/ffffff/hourglass.png" alt="hourglass"/>}
+                                        {isApplied ? <img className='w-10' src="https://img.icons8.com/ios/100/ffffff/instagram-check-mark.png" alt="instagram-check-mark" />
+                                            : <img className='w-10' src="https://img.icons8.com/ios/100/ffffff/hourglass.png" alt="hourglass" />}
 
                                     </button>
                                 </div>

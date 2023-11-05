@@ -30,7 +30,9 @@ export const UserTopNavbar = ({ user }: { user: jwtUserPayloadType; }) => {
                 </p>
             </div>
             <div>
-                <img className='rounded-full w-10' src={user.profilePicUrl} alt="avatar" />
+                <object data={user.profilePicUrl} type="image/png" className='rounded-full w-10'>
+                    <img width="94" height="94" src="https://img.icons8.com/3d-fluency/94/nurse-female--v2.png" alt="nurse-female--v2"/>
+                </object>
             </div>
         </div>
     );
