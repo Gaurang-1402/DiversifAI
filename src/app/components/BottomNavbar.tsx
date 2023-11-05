@@ -75,7 +75,7 @@ export const ListIcon = ({ active }: { active?: boolean }) => {
     const color = active ? ACTIVE_COLOR : INACTIVE_COLOR
 
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="41" height="41" viewBox="0 0 24 24" stroke-width="2" stroke={color} fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 24 24" stroke-width="2" stroke={color} fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
         <path d="M9 6l11 0"></path>
         <path d="M9 12l11 0"></path>

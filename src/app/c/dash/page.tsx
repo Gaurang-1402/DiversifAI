@@ -23,7 +23,6 @@ export default async function CandidateJobsAll() {
                 <div className="flex flex-col">
                     <p style={{
                         color: "var(--grey-60, #95969D)",
-                        fontFamily: "Poppins",
                         fontSize: "14px",
                         fontStyle: "normal",
                         fontWeight: 500,
@@ -34,7 +33,7 @@ export default async function CandidateJobsAll() {
                     </p>
                     <p style={{
                         color: "var(--Black, #0D0D26)",
-                        fontFamily: "Poppins",
+                        marginTop: "5px",
                         fontSize: "22px",
                         fontStyle: "normal",
                         fontWeight: 700,
@@ -69,7 +68,6 @@ export default async function CandidateJobsAll() {
                                 <div className="flex flex-col">
                                     <p style={{
                                         color: "var(--Pure-White, #FFF)",
-                                        fontFamily: "Poppins",
                                         fontSize: "20px",
                                         fontStyle: "normal",
                                         fontWeight: 600,
