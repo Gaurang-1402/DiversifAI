@@ -14,8 +14,8 @@ export default function Welcome() {
             <Image src="/effect.png" layout="fill" objectFit="cover" alt='effect' className="opacity-40"/>
             <div className="flex flex-col items-center">
               <img src="/diversifai-logo.png" alt="apply" className="absolute top-[25%]"/>
-              <h1 className="absolute top-[50%] text-white font-bold text-4xl">DiversifAI</h1>
-              <p className="absolute top-[70%] text-[#ffffff8a] font-bold text-xl">
+              <h1 className="absolute top-[50%] text-white font-bold text-4xl">Diversif<span className="text-[#98F9FF]">AI</span></h1>
+              <p className="absolute top-[70%] text-[#ffffff8a] font-medium text-xl">
                 Press anywhere to continue</p>
             </div>
 
