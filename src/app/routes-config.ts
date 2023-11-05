@@ -1,6 +1,8 @@
 
 export const LOGOUT_API= "/auth/logout"
 
+
+export const WELCOME_SCREEN='/welcome/'
 export const AUTH_SCREEN='/auth/'
 
 export const LOGIN='/auth/proxy?authType=LOGIN'
