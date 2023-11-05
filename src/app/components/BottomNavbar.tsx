@@ -8,13 +8,14 @@ import { CANDIDATE_DASH, CANDIDATE_APPLIED_JOBS, INTERVIEW_PREP } from "../route
 import { jwtUserPayloadType } from "../utils/SetAuthTokenAsCookie";
 
 
-
+const ACTIVE_COLOR = "#356899"
+const INACTIVE_COLOR = "#B7B7B7"
 
 
 
 
 const UserIcon = ({ active }: { active?: boolean }) => {
-    const color = active ? '#2563eb' : 'black'
+    const color = active ? ACTIVE_COLOR : INACTIVE_COLOR
 
     return (
         <svg width={28} height={30} viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +26,7 @@ const UserIcon = ({ active }: { active?: boolean }) => {
 }
 
 const MessageIcon = ({ active }: { active?: boolean }) => {
-    const color = active ? '#2563eb' : 'black'
+    const color = active ? ACTIVE_COLOR : INACTIVE_COLOR
 
     return (
         <svg width={33} height={32} viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +37,7 @@ const MessageIcon = ({ active }: { active?: boolean }) => {
 }
 
 const LightBulb = ({ active }: { active?: boolean }) => {
-    const color = active ? '#2563eb' : 'black'
+    const color = active ? ACTIVE_COLOR : INACTIVE_COLOR
 
     return (
         <svg width={33} height={32} viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,52 +48,43 @@ const LightBulb = ({ active }: { active?: boolean }) => {
 }
 
 const HomeBulb = ({ active }: { active?: boolean }) => {
-    const color = active ? '#2563eb' : 'black'
+    const color = active ? ACTIVE_COLOR : INACTIVE_COLOR
     return (
-        <svg width={32} height={32} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.414 0.586C17.0389 0.211058 16.5303 0.000427246 16 0.000427246C15.4696 0.000427246 14.961 0.211058 14.586 0.586L0.58596 14.586C0.221644 14.9632 0.0200549 15.4684 0.0246117 15.9928C0.0291686 16.5172 0.239506 17.0188 0.610323 17.3896C0.981139 17.7605 1.48276 17.9708 2.00716 17.9753C2.53155 17.9799 3.03676 17.7783 3.41396 17.414L3.99996 16.828V30C3.99996 30.5304 4.21067 31.0391 4.58575 31.4142C4.96082 31.7893 5.46953 32 5.99996 32H9.99996C10.5304 32 11.0391 31.7893 11.4142 31.4142C11.7892 31.0391 12 30.5304 12 30V26C12 25.4696 12.2107 24.9609 12.5857 24.5858C12.9608 24.2107 13.4695 24 14 24H18C18.5304 24 19.0391 24.2107 19.4142 24.5858C19.7892 24.9609 20 25.4696 20 26V30C20 30.5304 20.2107 31.0391 20.5857 31.4142C20.9608 31.7893 21.4695 32 22 32H26C26.5304 32 27.0391 31.7893 27.4142 31.4142C27.7892 31.0391 28 30.5304 28 30V16.828L28.586 17.414C28.9632 17.7783 29.4684 17.9799 29.9928 17.9753C30.5172 17.9708 31.0188 17.7605 31.3896 17.3896C31.7604 17.0188 31.9708 16.5172 31.9753 15.9928C31.9799 15.4684 31.7783 14.9632 31.414 14.586L17.414 0.586Z" fill={color} />
-        </svg>
+<svg width={29} height={29} viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.76337 17.6467V14.8074C6.76337 14.0826 7.35318 13.4951 8.08073 13.4951H10.7403C11.0897 13.4951 11.4248 13.6333 11.6718 13.8794C11.9189 14.1256 12.0577 14.4594 12.0577 14.8074V17.6467C12.0555 17.9481 12.1741 18.2378 12.3872 18.4517C12.6003 18.6655 12.8903 18.7858 13.1927 18.7858H15.0072C15.8546 18.788 16.6681 18.4541 17.2681 17.858C17.8681 17.2618 18.2053 16.4523 18.2053 15.608V7.5193C18.2053 6.83735 17.9019 6.1905 17.3768 5.75298L11.2043 0.841948C10.1306 -0.019123 8.59214 0.00867884 7.55047 0.907979L1.5188 5.75298C0.968902 6.1776 0.640235 6.82638 0.623993 7.5193V15.5998C0.623993 17.3594 2.05584 18.7858 3.82211 18.7858H5.59515C6.22339 18.7858 6.73397 18.2808 6.73852 17.655L6.76337 17.6467Z" fill={color}/>
+</svg>
+
 
     )
 }
 
 export const LogoutBulb = ({ active }: { active?: boolean }) => {
-    const color = active ? '#2563eb' : 'black'
+    const color = active ? ACTIVE_COLOR : INACTIVE_COLOR
 
 
     return (
-        <svg className="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000" preserveAspectRatio="xMidYMid meet">
-            <g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)" fill={color} stroke="none">
-                <path d="M386 870 c-63 -16 -153 -70 -197 -117 -22 -24 -55 -74 -72 -111 -29
--61 -32 -76 -32 -163 0 -90 2 -99 37 -171 45 -91 103 -147 196 -191 61 -29 76
--32 162 -32 86 0 101 3 162 32 93 44 151 100 196 191 35 72 37 81 37 172 0 91
--2 100 -37 172 -68 136 -188 217 -336 224 -42 2 -94 -1 -116 -6z m395 -317
-c32 -31 59 -64 59 -73 0 -17 -111 -130 -127 -130 -19 0 -33 25 -33 57 l0 33
--140 0 -140 0 0 40 0 40 140 0 140 0 0 33 c0 32 14 57 33 57 5 0 35 -25 68
--57z" />
-            </g>
-        </svg>
+<svg width={40} height={40} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke={color} >
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+</svg>
+
 
     )
 }
 
 export const ListIcon = ({ active }: { active?: boolean }) => {
-    const color = active ? '#2563eb' : 'black'
+    const color = active ? ACTIVE_COLOR : INACTIVE_COLOR
 
     return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width={24}
-            height={19}
-            viewBox="0 0 24 19"
-            className="w-10 h-10"
-            fill="none"
-        >
-            <path
-                d="M1.94595 7.6C0.869189 7.6 0 8.44867 0 9.5C0 10.5513 0.869189 11.4 1.94595 11.4C3.0227 11.4 3.89189 10.5513 3.89189 9.5C3.89189 8.44867 3.0227 7.6 1.94595 7.6ZM1.94595 0C0.869189 0 0 0.848667 0 1.9C0 2.95133 0.869189 3.8 1.94595 3.8C3.0227 3.8 3.89189 2.95133 3.89189 1.9C3.89189 0.848667 3.0227 0 1.94595 0ZM1.94595 15.2C0.869189 15.2 0 16.0613 0 17.1C0 18.1387 0.882162 19 1.94595 19C3.00973 19 3.89189 18.1387 3.89189 17.1C3.89189 16.0613 3.0227 15.2 1.94595 15.2ZM5.83784 18.3667H24V15.8333H5.83784V18.3667ZM5.83784 10.7667H24V8.23333H5.83784V10.7667ZM5.83784 0.633333V3.16667H24V0.633333H5.83784Z"
-                fill={color}
-            />
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="41" height="41" viewBox="0 0 24 24" stroke-width="2" stroke={color} fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M9 6l11 0"></path>
+        <path d="M9 12l11 0"></path>
+        <path d="M9 18l11 0"></path>
+        <path d="M5 6l0 .01"></path>
+        <path d="M5 12l0 .01"></path>
+        <path d="M5 18l0 .01"></path>
         </svg>
+
 
     )
 }
