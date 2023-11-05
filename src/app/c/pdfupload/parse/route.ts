@@ -31,7 +31,7 @@ export async function POST(request: NextRequest, { params }: { params: { jobId: 
 
     // With the file data in the buffer, you can do whatever you want with it.
     // For this, we'll just write it to the filesystem in a new location
-    const pdf_path = path.join(tmpdir(), "diversify-ai", file.name)
+    const pdf_path = path.join(process.cwd(), file.name)
     await writeFile(pdf_path, buffer)
 
     const pdfText = await new Promise<string>((res, rej) => {
