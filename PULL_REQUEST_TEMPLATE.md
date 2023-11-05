@@ -1,22 +1,15 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: "[BUG] "
-labels: bug
-assignees: ''
----
+# Pull Request Template
 
-# Describe the bug
-A clear and concise description of what the bug is.
+## Description
+Please include a summary of the change and which issue is fixed. Include the context and motivation for the change.
 
-# To Reproduce
-Steps to reproduce the behavior:
+## Type of change
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
 
-# Expected behavior
-A clear and concise description of what you expected to happen.
+## How Has This Been Tested?
+Please describe the tests that you ran to verify your changes.
 
-# Screenshots
-If applicable, add screenshots to help explain your problem.
-
-# Additional context
-Add any other context about the problem here.
+## Checklist:
+- [ ] I have followed the style guidelines of this project
+- [ ] I have performed a self-review of my own code
