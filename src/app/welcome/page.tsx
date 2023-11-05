@@ -15,6 +15,8 @@ export default function Welcome() {
             <div className="flex flex-col items-center">
               <img src="/diversifai-logo.png" alt="apply" className="absolute top-[25%]"/>
               <h1 className="absolute top-[50%] text-white font-bold text-4xl">DiversifAI</h1>
+              <p className="absolute top-[70%] text-[#ffffff8a] font-bold text-xl">
+                Press anywhere to continue</p>
             </div>
 
                 <h1></h1>
