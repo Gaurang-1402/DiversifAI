@@ -2,10 +2,10 @@
 export const LOGOUT_API = "/auth/logout"
 
 
-export const WELCOME_SCREEN = '/welcome/'
-export const AUTH_SCREEN = '/auth/'
-export const SELECTOR = '/selector/'
-export const RESUME_UPLOAD = '/c/pdfupload/'
+export const WELCOME_SCREEN = '/welcome'
+export const AUTH_SCREEN = '/auth'
+export const SELECTOR = '/selector'
+export const RESUME_UPLOAD = '/c/pdfupload'
 
 export const LOGIN = '/auth/proxy?authType=LOGIN'
 export const REGISTER_AS_STUDENT_SCREEN = '/auth/proxy?authType=REGISTER_AS_STUDENT'
@@ -19,10 +19,10 @@ export const CANDIDATE_DASH = '/c/dash'
 export const CANDIDATE_PROFILE_SCREEN='/c/profile'
 
 
-export const RECRUITER_CREATE_JOB = '/r/jobs/new/'
+export const RECRUITER_CREATE_JOB = '/r/jobs/new'
 
 // show all jobs created by the recruiter
-// export const RECRUITER_VIEW_ALL_JOBS='/r/jobs/all/'
+// export const RECRUITER_VIEW_ALL_JOBS='/r/jobs/all'
 
 // can be accessed by the recruiter only if they had created it
 // we will also show some stats like number of candidates applied etc
