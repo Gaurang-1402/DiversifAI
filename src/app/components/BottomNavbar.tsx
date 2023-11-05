@@ -50,9 +50,9 @@ const LightBulb = ({ active }: { active?: boolean }) => {
 const HomeBulb = ({ active }: { active?: boolean }) => {
     const color = active ? ACTIVE_COLOR : INACTIVE_COLOR
     return (
-<svg width={29} height={29} viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
-<path d="M6.76337 17.6467V14.8074C6.76337 14.0826 7.35318 13.4951 8.08073 13.4951H10.7403C11.0897 13.4951 11.4248 13.6333 11.6718 13.8794C11.9189 14.1256 12.0577 14.4594 12.0577 14.8074V17.6467C12.0555 17.9481 12.1741 18.2378 12.3872 18.4517C12.6003 18.6655 12.8903 18.7858 13.1927 18.7858H15.0072C15.8546 18.788 16.6681 18.4541 17.2681 17.858C17.8681 17.2618 18.2053 16.4523 18.2053 15.608V7.5193C18.2053 6.83735 17.9019 6.1905 17.3768 5.75298L11.2043 0.841948C10.1306 -0.019123 8.59214 0.00867884 7.55047 0.907979L1.5188 5.75298C0.968902 6.1776 0.640235 6.82638 0.623993 7.5193V15.5998C0.623993 17.3594 2.05584 18.7858 3.82211 18.7858H5.59515C6.22339 18.7858 6.73397 18.2808 6.73852 17.655L6.76337 17.6467Z" fill={color}/>
-</svg>
+        <svg width={29} height={29} viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.76337 17.6467V14.8074C6.76337 14.0826 7.35318 13.4951 8.08073 13.4951H10.7403C11.0897 13.4951 11.4248 13.6333 11.6718 13.8794C11.9189 14.1256 12.0577 14.4594 12.0577 14.8074V17.6467C12.0555 17.9481 12.1741 18.2378 12.3872 18.4517C12.6003 18.6655 12.8903 18.7858 13.1927 18.7858H15.0072C15.8546 18.788 16.6681 18.4541 17.2681 17.858C17.8681 17.2618 18.2053 16.4523 18.2053 15.608V7.5193C18.2053 6.83735 17.9019 6.1905 17.3768 5.75298L11.2043 0.841948C10.1306 -0.019123 8.59214 0.00867884 7.55047 0.907979L1.5188 5.75298C0.968902 6.1776 0.640235 6.82638 0.623993 7.5193V15.5998C0.623993 17.3594 2.05584 18.7858 3.82211 18.7858H5.59515C6.22339 18.7858 6.73397 18.2808 6.73852 17.655L6.76337 17.6467Z" fill={color} />
+        </svg>
 
 
     )
@@ -63,9 +63,9 @@ export const LogoutBulb = ({ active }: { active?: boolean }) => {
 
 
     return (
-<svg width={40} height={40} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke={color} >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-</svg>
+        <svg width={40} height={40} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke={color} >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+        </svg>
 
 
     )
@@ -75,14 +75,14 @@ export const ListIcon = ({ active }: { active?: boolean }) => {
     const color = active ? ACTIVE_COLOR : INACTIVE_COLOR
 
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 24 24" stroke-width="2" stroke={color} fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M9 6l11 0"></path>
-        <path d="M9 12l11 0"></path>
-        <path d="M9 18l11 0"></path>
-        <path d="M5 6l0 .01"></path>
-        <path d="M5 12l0 .01"></path>
-        <path d="M5 18l0 .01"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 24 24" strokeWidth="2" stroke={color} fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M9 6l11 0"></path>
+            <path d="M9 12l11 0"></path>
+            <path d="M9 18l11 0"></path>
+            <path d="M5 6l0 .01"></path>
+            <path d="M5 12l0 .01"></path>
+            <path d="M5 18l0 .01"></path>
         </svg>
 
 
