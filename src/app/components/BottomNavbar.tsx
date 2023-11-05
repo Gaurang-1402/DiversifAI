@@ -114,9 +114,9 @@ export const BottomNavbar = ({ user }: { user: jwtUserPayloadType | null }) => {
                     <ListIcon active={pathname === CANDIDATE_APPLIED_JOBS} />
                 </Link>
 
-                <Link href={INTERVIEW_PREP} className="flex justify-center items-center">
+                {/* <Link href={INTERVIEW_PREP} className="flex justify-center items-center">
                     <MessageIcon active={pathname === INTERVIEW_PREP} />
-                </Link>
+                </Link> */}
             </>}
 
             {/* TODO */}
