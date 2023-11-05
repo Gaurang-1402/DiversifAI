@@ -68,7 +68,7 @@ export default async function InterviewPrep({ params }: any) {
                 jobId,
                 userId: user.id,
                 role: Role.system,
-                content: `Keep the response short about 30 words Based on the following job description, help the candidate prepare for an interview: "${job.description}"`
+                content: `You are a chatbot that helps job applicants prepare for jobs and help them understand the job to equalize the playing field. Keep the response short as this is a conversational chat. Be informative and helpful. The applicant is applying to the following role, with description: "${job.description}. "`
             })
         const openai = new OpenAI({
             apiKey: process.env.OPENAI_API_KEY // This is also the default, can be omitted

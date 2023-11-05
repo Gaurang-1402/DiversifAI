@@ -42,7 +42,7 @@ export default function AuthStart() {
                             <span>
                                 <img className='w-6' src="https://img.icons8.com/ios-filled/100/nurse-female.png" alt="nurse-female" />
                             </span>{" "}
-                            <span> Register as Student</span>
+                            <span> Register as Applicant</span>
                         </div>
                     </Link>
                 </div>
@@ -55,7 +55,7 @@ export default function AuthStart() {
                             <span>
                                 <img className='w-6' src="https://img.icons8.com/fluency/96/hospital.png" alt="hospital" />
                             </span>{" "}
-                            <span> Register as Recuiter</span>
+                            <span> Register as Hirer</span>
                         </div>
                     </Link>
                 </div>

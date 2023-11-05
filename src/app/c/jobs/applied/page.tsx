@@ -63,7 +63,7 @@ export default async function CandidateJobsAll() {
                         </div>
                         <div className="flex flex-col">
                             {/* Use salary from the job data, ensure it's formatted correctly */}
-                            <p>{jobApplied.job.salary}/yr</p>
+                            <p>{jobApplied.job.salary}</p>
                             {/* Use location from the job data */}
                             <p className="text-black opacity-50 mt-2">
                                 {jobApplied.job.location}

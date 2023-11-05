@@ -38,6 +38,8 @@ export async function POST(request: NextRequest, { params }: { params: { jobId: 
       });
     })
 
+    console.log(pdfText);
+
     // use LLM to get the desired info
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY // This is also the default, can be omitted
@@ -85,7 +87,9 @@ export async function POST(request: NextRequest, { params }: { params: { jobId: 
           awardsCertifications String
 
 
-          If there are more than one experience or education, please return the latest one only. for experienceDates & educationDates please return the start and end date in the format of "Jan 2019 - Dec 2020" or "Jan 2019 - Present". If end date is not given, assume it to be Present.`,
+          If there are more than one experience or education, please return the latest one only. for experienceDates & educationDates please return the start and end date in the format of "Jan 2019 - Dec 2020" or "Jan 2019 - Present". If end date is not given, assume it to be Present.
+          
+          If no input is provided, return an empty string for all the fields.`,
           role: 'system'
         },
         {
