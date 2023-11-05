@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({message: "Please login"})
     }
     // if authenticated, find if it's student or recruiter
-    const url= new URL(request.url)
+    const url= new URL(request.nextUrl)
     url.pathname = (user?.isRecruiter? RECRUITER_DASH: CANDIDATE_DASH)
 
     return NextResponse.redirect(url)

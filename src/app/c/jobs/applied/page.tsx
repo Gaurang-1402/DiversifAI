@@ -41,7 +41,7 @@ export default async function CandidateJobsAll() {
 
             {jobsApplied.length === 0 && <div className="flex flex-col items-center justify-center mt-10">
                 <p className="text-black opacity-50">
-                    You haven't applied to any jobs yet.
+                    You haven&apos;t applied to any jobs yet.
                 </p>
             </div>}
             {

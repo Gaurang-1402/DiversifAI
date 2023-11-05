@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(authUrl);
   } catch (err) {
     console.error(err);
-    return NextResponse.redirect(new URL("/error", request.url));
+    return NextResponse.redirect(new URL("/error", request.nextUrl));
   }
 
 }

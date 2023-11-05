@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
     try {
-        const res = NextResponse.redirect(new URL('/', request.url))
+        const url = request.nextUrl.clone()
+        const res = NextResponse.redirect(url)
         res.cookies.set("cocoAPI", 'token', {
             secure: process.env.USE_SECURE_COOKIE === "1" ? true : false,
             sameSite: "lax",

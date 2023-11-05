@@ -77,7 +77,7 @@ export async function GET(request: NextRequest) {
                 })
             }
 
-            const response = NextResponse.redirect(new URL(UPLOAD_PDF, request.url));
+            const response = NextResponse.redirect(new URL(UPLOAD_PDF, request.nextUrl));
             setAuthTokenAsCookie(response, userInstance)
 
             if(authType===AuthType.REGISTER_AS_STUDENT){

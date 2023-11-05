@@ -8,13 +8,15 @@ import { NextRequest, NextResponse } from 'next/server';
 
 
 export async function GET(request: NextRequest) {
+  const { id: jobId } = useParams();
   try {
     const user = getUser()
+
+
     if (!user) {
       throw new Error("not authenticated")
     }
 
-    const { id: jobId } = useParams();
     const userId = user.id
 
 
