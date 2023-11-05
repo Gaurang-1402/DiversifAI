@@ -3,7 +3,7 @@
 import { BottomNavbar } from "@/app/components/BottomNavbar"
 import { UserTopNavbar } from "../../dash/UserTopNavbar";
 import { $Enums, Role } from "@prisma/client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { jwtUserPayloadType } from "@/app/utils/SetAuthTokenAsCookie";
 import { NEW_MESSAGE_API } from "@/app/routes-config";
 
@@ -26,7 +26,7 @@ function UserChatBubble({ text }: { text: string }) {
     );
 }
 
-export const InterviewMessagePageClient = ({ user, messages:tmpMessages, jobId }: {
+export const InterviewMessagePageClient = ({ user, messages: tmpMessages, jobId }: {
     user: jwtUserPayloadType,
     messages: {
         id: string;
@@ -38,46 +38,91 @@ export const InterviewMessagePageClient = ({ user, messages:tmpMessages, jobId }
     }[],
     jobId: string
 }) => {
-
     const [messages, setMessages] = useState(tmpMessages)
-
     const [isLoading, setIsLoading] = useState(false)
 
+    const chatWindowRef=useRef<HTMLDivElement>(null)
 
     const handleNewMessage = async (message: string) => {
-        setIsLoading(true)
-        setMessages(e => ([...e, {
-            content: message,
-            createdAt: new Date(),
-            id: Date.now().toString(),
-            jobId,
-            role: Role.user,
-            userId: user.id
-        }]))
-        const response = await fetch(NEW_MESSAGE_API(jobId), {
-            body: JSON.stringify({
-                message
-            }),
-            method: 'POST'
-        })
-        const data = await response.json()
-        if (data.error) {
-            console.error(data.error)
-            return
-        }
+        try {
+            if (isLoading) return
 
-        setMessages(e => ([...e, data.assistantMessage]))
-        console.log(data)
+            setIsLoading(true)
+            setMessages(e => ([...e, {
+                content: message,
+                createdAt: new Date(),
+                id: Date.now().toString(),
+                jobId,
+                role: Role.user,
+                userId: user.id
+            }]))
+            setTimeout(() => {
+                chatWindowRef.current?.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }, 1000)
+            const response = await fetch(NEW_MESSAGE_API(jobId), {
+                body: JSON.stringify({
+                    message
+                }),
+                method: 'POST'
+            })
+
+            const reader = response.body?.getReader()
+            if (!reader) {
+                throw new Error("No reader")
+            }
+            setMessages(e => ([...e, {
+                content: "Loading...",
+                createdAt: new Date(),
+                id: Date.now().toString(),
+                jobId,
+                role: Role.assistant,
+                userId: user.id
+            }]))
+            setTimeout(() => {
+                chatWindowRef.current?.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }, 1000)
+
+
+            new Promise(async (resolve, reject) => {
+                let str = ''
+                await new Promise((req, rek) => req(4000))
+                while (true) {
+                    const { done, value } = await reader.read()
+                    if (done) {
+                        break
+                    }
+                    const values = new TextDecoder().decode(value).split('\n')
+                    const valuesss = values.filter(e => e.trim() !== '')
+                    valuesss.forEach(e => {
+                        const json = JSON.parse(e)
+                        if (json.choices[0]['finish_reason'] === 'stop') {
+                            return;
+                        }
+                        const messageTxt = json.choices[0].delta.content
+                        str += messageTxt
+                    })
+
+                    setMessages(e => ([...e.slice(0, e.length - 1), {
+                        ...(e[e.length - 1]),
+                        content: str,
+                    }]))
+                }
+                resolve(1)
+            })
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     const [newMessage, setNewMessage] = useState('')
+
 
 
     return (
         <div className="flex flex-col min-h-screen px-3 mt-5">
             <UserTopNavbar user={user} />
 
-            <div className="mt-5 flex-grow gap-2 flex flex-col">
+            <div ref={chatWindowRef} className="mt-5 flex-grow gap-2 flex flex-col mb-40">
                 {messages.map((message) => (
                     message.role !== Role.user ? (
                         (
@@ -101,8 +146,6 @@ export const InterviewMessagePageClient = ({ user, messages:tmpMessages, jobId }
                             if (!newMessage.trim()) {
                                 return
                             }
-                            console.log('xxxx', newMessage)
-
                             handleNewMessage(newMessage)
                             setNewMessage('')
                         }}>

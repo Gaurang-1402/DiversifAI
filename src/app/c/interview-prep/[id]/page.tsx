@@ -13,54 +13,8 @@ import { PrismaClient, Role } from '@prisma/client';
 import { assert } from 'console';
 import { NEW_MESSAGE_API } from '@/app/routes-config';
 import { InterviewMessagePageClient } from './InterviewMessagePageClient';
+import { ObjectId } from 'bson';
 
-
-
-// export async function loader({ params }) {
-
-//     // ... existing code to get user and job
-//     const { id } = params;
-
-//     const openai = new OpenAI({
-//         apiKey: process.env.OPENAI_API_KEY // This is also the default, can be omitted
-//     });
-//     const job = await prisma.job.findUnique({
-//         where: {
-//             id: params.id,
-//         },
-//     });
-
-//     if (!job) {
-//         throw new Response('Not Found', { status: 404 });
-//     }
-
-//     let interviewPrepContent = '';
-
-//     try {
-//         // Make the call to the OpenAI API
-
-//         const chatCompletion = await openai.chat.completions.create({
-//             model: "gpt-3.5-turbo",
-//             messages: [{ "role": "system", "content": `Based on the following job description, help the candidate prepare for an interview: "${job.description}"` }],
-//         });
-
-//         interviewPrepContent = chatCompletion.choices[0].message;
-//         console.log(interviewPrepContent);
-//     } catch (error) {
-//         console.error('Error calling the OpenAI API:', error);
-//         // Handle the error appropriately. Perhaps return a default message or rethrow the error.
-//     }
-
-//     // Add the interview preparation content to the props returned for the page
-//     return {
-//         props: {
-//             nothing: {}
-//             // job,
-//             // user,
-//             // interviewPrepContent, // This will be passed to your page component
-//         },
-//     };
-// }
 
 
 const AIchatText = "Hello! How can I assist you with your interview preparation?";
@@ -133,16 +87,18 @@ export default async function InterviewPrep({ params }: any) {
             createdAt: new Date(),
             jobId,
             userId: user.id,
+            id: (new ObjectId()).toString()
         })
+
         prisma.interviewBotMessage.createMany({
             data: prospectiveMessages
         }).then(e => {
-            console.log(`Response from db: ${e}`)
+            console.log(`Response from db: ${e.count}`)
         })
     }
 
 
-    const initialMessages = messages || prospectiveMessages
+    const initialMessages = messages.length ? messages : prospectiveMessages
     assert(initialMessages.length > 0, "Initial messages should be greater than 0")
 
 

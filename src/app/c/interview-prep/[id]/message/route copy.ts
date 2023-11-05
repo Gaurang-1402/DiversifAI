@@ -69,25 +69,47 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
 
     const streams = chatCompletion.toReadableStream().tee()
 
+    const myStream=new TransformStream()
+    // create a response which returns the stream
+    const response = new NextResponse(myStream.readable, {
+      headers: {
+      }
+    })
 
-    const response = new NextResponse(streams[0])
+
+
+
+    const writer=myStream.writable.getWriter()
+
+    console.log(writer.closed, writer.ready, myStream.readable.getReader());
+    writer.write("messageTxtxxx")
+
+
+    writer.write('xxxxxxx12')
 
     new Promise(async (resolve, reject) => {
       let str = ''
+      writer.write('xxxx2')
 
       const reader = streams[1].getReader()
       while (true) {
         const { done, value } = await reader.read();
         if (done) {
+          writer.close()
           break
         }
+
+        console.log()
+
         const json = JSON.parse(new TextDecoder().decode(value))
         if (json.choices[0]['finish_reason'] === 'stop') {
           break
         }
         const messageTxt = json.choices[0].delta.content
+        writer.write(messageTxt)
         str += messageTxt
       }
+      writer.write('lkxxxxxnwxx12')
 
       newMessages.push({
         content: str,
