@@ -5,6 +5,9 @@ import { PrismaClient } from '@prisma/client';
 import OpenAI from 'openai';
 import { prisma } from '@/db';
 import { writeFile } from 'fs/promises';
+import path from 'path';
+import { tmpdir } from 'os';
+
 
 const pdfUtil = require('pdf-to-text');
 
@@ -28,7 +31,7 @@ export async function POST(request: NextRequest, { params }: { params: { jobId: 
 
     // With the file data in the buffer, you can do whatever you want with it.
     // For this, we'll just write it to the filesystem in a new location
-    const pdf_path = `/tmp/${file.name}`
+    const pdf_path = path.join(tmpdir(), "diversify-ai", file.name)
     await writeFile(pdf_path, buffer)
 
     const pdfText = await new Promise<string>((res, rej) => {
