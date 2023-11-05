@@ -13,7 +13,7 @@ export default function Home() {
   const user = getUser()
 
   if(user){
-    redirect(SELECTOR)
+    redirect(DASH)
   }else{
     redirect(WELCOME_SCREEN)
   }

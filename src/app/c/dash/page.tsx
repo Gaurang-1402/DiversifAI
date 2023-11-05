@@ -7,6 +7,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from "@/db";
 import { PrismaClient, User } from '@prisma/client';
 import { UserTopNavbar } from './UserTopNavbar';
+import Link from 'next/link';
+import { CANDIDATE_JOB_DETAILS } from '@/app/routes-config';
 
 export default async function CandidateJobsAll() {
 
@@ -38,12 +40,20 @@ export default async function CandidateJobsAll() {
         return <AuthRedirectToLandingPageWithToast />
     }
 
-    // console.log(prisma)
 
-    const jobs = await prisma.job.findMany();
+    const jobs = await prisma.job.findMany({
+        include: {
+            JobsApplied: {
+                where: {
+                    userId: user.id
+                },
+            }
+        }
+    });
+    console.log(jobs)
 
     return <div className="flex flex-col" >
-        <div className="mx-4 mt-4" >
+        <div className="mx-4 mt-4 mb-20" >
             <UserTopNavbar user={user} />
 
             <div className="mt-6 w-full flex items-center justify-between">
@@ -58,9 +68,11 @@ export default async function CandidateJobsAll() {
 
             {
                 jobs.map((job) => {
+                    const isApplied = job.JobsApplied.length > 0
                     return (
                         (
-                            <div className="h-42 flex flex-col bg-[#8000FF] gap-6  px-6 rounded-3xl mt-10 py-4 my-4" key={job.id}>
+
+                            <Link href={CANDIDATE_JOB_DETAILS(job.id)} className="h-42 flex flex-col bg-[#8000FF] gap-6  px-6 rounded-3xl mt-10 py-4 my-4" key={job.id}>
                                 <div className="flex flex-row justify-between">
                                     <div className="flex flex-row items-center gap-4">
                                         <div>
@@ -83,7 +95,10 @@ export default async function CandidateJobsAll() {
                                         </div>
                                     </div>
                                     <button className="">
-                                        <img src="/apply-icon.svg" alt="apply" />
+
+                                        {isApplied ?<img className='w-10' src="https://img.icons8.com/ios/100/ffffff/instagram-check-mark.png" alt="instagram-check-mark"/>
+                                        :<img className='w-10'  src="https://img.icons8.com/ios/100/ffffff/hourglass.png" alt="hourglass"/>}
+
                                     </button>
                                 </div>
                                 <div className="flex flex-row justify-between">
@@ -103,7 +118,7 @@ export default async function CandidateJobsAll() {
                                         {job.location}
                                     </p>
                                 </div>
-                            </div>
+                            </Link>
                         )
                     )
                 })

@@ -6,6 +6,7 @@ import { getUser } from '@/app/utils/GetUser';
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from "@/db";
 import Link from 'next/link';
+import { UserTopNavbar } from '../../dash/UserTopNavbar';
 
 export default async function CandidateJobsAll() {
     const user = getUser()
@@ -25,21 +26,18 @@ export default async function CandidateJobsAll() {
     });
 
     return <div>
+
         <div className="w-full px-4 mt-4">
+            <UserTopNavbar user={user} />
+
             <div className="flex w-full justify-center">
-                <p style={{
-                    color: "var(--Black, #0D0D26)",
-                    textAlign: "center",
-                    fontSize: "16px",
-                    fontStyle: "normal",
-                    fontWeight: 600,
-                    lineHeight: "130%", /* 20.8px */
-                    letterSpacing: "-0.16px",
-                }}>
-                    Applied
-                </p>
+                <div className='w-full'>
+                    <p className='text-xl mt-4 font-bold'>
+                        Applied Job Applications
+                    </p>
+                </div>
+
             </div>
-            {/* APPLIED LIST */}
             {
                 jobsApplied.map((jobApplied) => (
                     <div key={jobApplied.jobId} className="flex flex-row justify-between shadow-lg mt-7 px-6 py-6 rounded-lg">

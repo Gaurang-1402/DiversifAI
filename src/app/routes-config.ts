@@ -5,7 +5,7 @@ export const LOGOUT_API = "/auth/logout"
 export const WELCOME_SCREEN = '/welcome/'
 export const AUTH_SCREEN = '/auth/'
 export const SELECTOR = '/selector/'
-export const RESUME_UPLOAD = '/pdfupload/'
+export const RESUME_UPLOAD = '/c/pdfupload/'
 
 export const LOGIN = '/auth/proxy?authType=LOGIN'
 export const REGISTER_AS_STUDENT_SCREEN = '/auth/proxy?authType=REGISTER_AS_STUDENT'
@@ -16,8 +16,7 @@ export const DASH = '/dash'
 export const CANDIDATE_DASH = '/c/dash'
 
 
-// export const
-// export const CANDIDATE_PROFILE_SCREEN='/c/profile'
+export const CANDIDATE_PROFILE_SCREEN='/c/profile'
 
 
 export const RECRUITER_CREATE_JOB = '/r/jobs/new/'
@@ -44,3 +43,15 @@ export const CANDIDATE_APPLY_JOB = (id: string) => `/c/jobs/${id}/apply`
 
 
 export const NEW_MESSAGE_API = (id: string) => `/c/interview-prep/${id}/message`
+
+
+export const APPLY_JOB_API=(id: string) => `/c/jobs/${id}/apply`
+
+
+export const UPLOAD_PDF=RESUME_UPLOAD
+
+
+export const PARSE_PDF_API='/c/pdfupload/parse'
+
+
+export const EDIT_PROFILE_API='/c/profile/edit'

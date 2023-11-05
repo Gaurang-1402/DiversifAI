@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Menu } from "@headlessui/react";
 import { logOutUserHandler } from "@/app/logoutbtn";
 import { usePathname, useRouter } from "next/navigation";
-import { CANDIDATE_DASH, CANDIDATE_APPLIED_JOBS, INTERVIEW_PREP } from "../routes-config";
+import { CANDIDATE_DASH, CANDIDATE_APPLIED_JOBS, INTERVIEW_PREP, CANDIDATE_PROFILE_SCREEN } from "../routes-config";
 import { jwtUserPayloadType } from "../utils/SetAuthTokenAsCookie";
 
 
@@ -106,9 +106,9 @@ export const BottomNavbar = ({ user }: { user: jwtUserPayloadType | null }) => {
                     <ListIcon active={pathname === CANDIDATE_APPLIED_JOBS} />
                 </Link>
 
-                {/* <Link href={INTERVIEW_PREP} className="flex justify-center items-center">
-                    <MessageIcon active={pathname === INTERVIEW_PREP} />
-                </Link> */}
+                <Link href={CANDIDATE_PROFILE_SCREEN} className="flex justify-center items-center">
+                    <UserIcon active={pathname === CANDIDATE_PROFILE_SCREEN} />
+                </Link>
             </>}
 
             {/* TODO */}

@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 import { googleOAuth2ClientInstance } from '@/app/utils/GoogleOAuth2ClientInstance';
 import { PrismaClient, User } from '@prisma/client';
 import { setAuthTokenAsCookie } from '@/app/utils/SetAuthTokenAsCookie';
+import { UPLOAD_PDF } from '@/app/routes-config';
 
 
 export enum AuthType {
@@ -76,8 +77,16 @@ export async function GET(request: NextRequest) {
                 })
             }
 
-            const response = NextResponse.redirect(new URL("/selector", request.url));
+            const response = NextResponse.redirect(new URL(UPLOAD_PDF, request.url));
             setAuthTokenAsCookie(response, userInstance)
+
+            if(authType===AuthType.REGISTER_AS_STUDENT){
+                await prisma.candidateProfile.create({
+                    data: {
+                        id: userInstance.id
+                    }
+                })
+            }
 
             return response;
         } catch (err: any) {
