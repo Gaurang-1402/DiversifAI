@@ -28,6 +28,24 @@ Our second feature is an interview preparation feature for applicants. It includ
 
 
 
+### Setting up Dev env
+
+```bash
+# On linux (you can use apt or apt-get depending on your distro)
+yum -y install poppler-utils
+
+# on mac
+brew install xpdf
+```
+
+```bash
+npm install
+npx prisma db push
+npm run dev
+```
+
+
+
 ## UX Flow:
 ![image](https://user-images.githubusercontent.com/48355572/280545505-76d7cf84-be2a-4c2b-b124-90b3287b7e1d.png)
   
@@ -217,6 +235,4 @@ In the long term, DiversifAI is set to pioneer a new standard in recruitment, wh
   
 
 **Note ⚠️ — API credentials have been revoked. If you want to run the same on your local, use your own credentials.**
-
-  
 
