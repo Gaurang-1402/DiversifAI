@@ -1,4 +1,3 @@
-import { auth } from 'google-auth-library';
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken'
 import { googleOAuth2ClientInstance } from '@/app/utils/GoogleOAuth2ClientInstance';
@@ -15,8 +14,10 @@ export enum AuthType {
 
 
 export async function GET(request: NextRequest) {
+    const state = request.nextUrl.searchParams.get('state')
+    const code = request.nextUrl.searchParams.get('code');
+
     try {
-        const state = request.nextUrl.searchParams.get('state')
         if (!state) {
             throw new Error("No state provided")
         }
@@ -29,7 +30,6 @@ export async function GET(request: NextRequest) {
         }
 
         try {
-            const code: string | null = request.nextUrl.searchParams.get('code');
             if (!code) {
                 throw new Error("No code provided");
             }
